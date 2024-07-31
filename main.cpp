@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <QWebChannel>
 #include "MyBackend.h"
+#include "AnotherBackend.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,11 +11,13 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    // Create an instance of MyBackend
-    MyBackend backend;
+    // Create instances of the C++ classes
+    MyBackend myBackend;
+    AnotherBackend anotherBackend;
 
-    // Expose the backend object to QML
-    engine.rootContext()->setContextProperty("backend", &backend);
+    // Expose the objects to QML
+    engine.rootContext()->setContextProperty("myBackend", &myBackend);
+    engine.rootContext()->setContextProperty("anotherBackend", &anotherBackend);
 
     // Load the QML file
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

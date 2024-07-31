@@ -1,14 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtWebEngine 1.10
-import QtWebChannel 1.15
+import QtWebChannel 1.0
 import QtQuick.Window 2.14
 
 Window {
     visible: true
     width: 800
     height: 600
-    title: "Simple WebChannel Example"
+    title: "Simple WebChannel Dual Class Example"
 
     WebEngineView {
         id: webView
@@ -17,21 +17,22 @@ Window {
 
         WebChannel {
             id: channel
-            registeredObjects: [myObject] // Get exposed QtObjects
+            registeredObjects: [myObject]
         }
 
         webChannel: channel
     }
 
-    // This object is accessible from the HTML/Javascript
+    // Accessible from the HTML/JS
     QtObject {
         id: myObject
-        WebChannel.id: "myObject" // Expose to WebChannel
+        WebChannel.id: "myObject"
 
-        // A function to be called from JavaScript
+        // Define a function to be called from JS
         function showAlert(message) {
             console.log("Received message from HTML: " + message);
-            backend.showAlert(message);  // Call C++ defined method
+            myBackend.showAlert(message);  // Call method in MyBackend
+            anotherBackend.logMessage("Forwarded from HTML: " + message);  // Call method in AnotherBackend
         }
     }
 }

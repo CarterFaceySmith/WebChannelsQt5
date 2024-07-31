@@ -5,6 +5,7 @@ QT += quick core webengine webenginewidgets
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        AnotherBackend.cpp \
         MyBackend.cpp \
         main.cpp
 
@@ -25,4 +26,5 @@ DISTFILES += \
     index.html
 
 HEADERS += \
+    AnotherBackend.h \
     MyBackend.h
