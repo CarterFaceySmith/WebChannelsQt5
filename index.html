@@ -5,15 +5,6 @@
     <title>Simple QtWebChannel Example</title>
     <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
     <script src="qrc:///main.js"></script>
-    <script>
-        function sendMessage() {
-            if (window.myObject) {
-                window.myObject.showAlert("Hello from HTML!");
-            } else {
-                console.log("myObject is not available yet.");
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>Qt WebChannel Example</h1>
